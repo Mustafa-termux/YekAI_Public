@@ -1,1 +1,0 @@
-Bu proje özel olarak lisanslanmıştır. Kullanım izni almak için lütfen geliştiriciyle iletişime geçin: yekmustafabekir@gmail.com
