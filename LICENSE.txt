@@ -1,0 +1,11 @@
+YekAI Lisansı – Özel Lisans Şartları
+
+Bu projeye ait tüm haklar Mustafa Bekir Yek’e (yekmustafabekir@gmail.com) aittir.
+
+Bu yazılımın tamamı veya herhangi bir kısmı; kopyalanamaz, çoğaltılamaz, dağıtılamaz, değiştirilemez, başka bir projeye dahil edilemez veya herhangi bir ortamda kullanılmaz. Bu yazılıma yalnızca geliştirici tarafından açık ve yazılı izin verilmesi halinde erişim ve kullanım hakkı doğar.
+
+İzinsiz kullanım, paylaşım, çoğaltma veya değiştirme gibi eylemler yasal işlem başlatma sebebidir. Tüm yasal haklar saklıdır.
+
+Bu yazılımın kullanımı yalnızca geliştirici tarafından onaylanan kişiler veya kuruluşlarla sınırlıdır. Geliştirici, dilediği zaman bu lisansı değiştirme veya geri çekme hakkını saklı tutar.
+
+© 2025 Mustafa Bekir Yek
