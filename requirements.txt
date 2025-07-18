@@ -1,0 +1,6 @@
+openai
+flask
+nltk
+pyttsx3 
+# pyttsx3  # Sesli yanıtlar için, sistemine göre çalışmayabilir
+
