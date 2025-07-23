@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BekirGPT</title>
+  <link rel="manifest" href="manifest.json">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js');
+    }
+  </script>
+</head>
+<body class="bg-gray-100 flex flex-col h-screen">
+  <header class="bg-green-600 text-white text-center py-3 shadow-md">
+    <h1 class="text-xl font-semibold">BekirGPT</h1>
+  </header>
+
+  <main id="chat" class="flex-1 overflow-y-auto p-4 space-y-4">
+    <div class="flex justify-start">
+      <div class="bg-white p-3 rounded-xl max-w-xs text-sm shadow">
+        Merhaba kardeşim! Ben BekirGPT, sana nasıl yardımcı olabilirim?
+      </div>
+    </div>
+  </main>
+
+  <form id="chat-form" class="p-4 bg-white flex items-center gap-2 shadow-md">
+    <input id="input" type="text" placeholder="Mesajını yaz..." class="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500" />
+    <button type="submit" class="bg-green-600 hover:bg-green-700 text-white rounded-full px-4 py-2 text-sm">Gönder</button>
+  </form>
+
+  <script>
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("input");
+    const chat = document.getElementById("chat");
+
+    const appendMessage = (text, sender = "user") => {
+      const msgDiv = document.createElement("div");
+      msgDiv.className = "flex " + (sender === "user" ? "justify-end" : "justify-start");
+      msgDiv.innerHTML = `
+        <div class="${sender === "user" ? "bg-green-500 text-white" : "bg-white text-black shadow"} p-3 rounded-xl max-w-xs text-sm">
+          ${text}
+        </div>
+      `;
+      chat.appendChild(msgDiv);
+      chat.scrollTop = chat.scrollHeight;
+    };
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const userInput = input.value.trim();
+      if (!userInput) return;
+
+      appendMessage(userInput, "user");
+      input.value = "";
+
+      try {
+        const response = await fetch("https://bekirgpt.onrender.com/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: userInput })
+        });
+
+        const data = await response.json();
+        appendMessage(data.reply || "Cevap alınamadı...", "bot");
+      } catch (err) {
+        appendMessage("Sunucuya bağlanılamadı!", "bot");
+      }
+    });
+  </script>
+</body>
+</html>
